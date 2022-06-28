@@ -4,7 +4,8 @@ import-module ./lib/*.ps1
 # Start log
 Start-Log
 
-$PackageName = "CodecGuide.K-LiteCodecPack"
+$WinGetPackage = "CodecGuide.K-LiteCodecPack"
+$NevergreenPackage = "KLiteCodecPack"
 
 $Channels = @(
     "Basic"
@@ -13,15 +14,15 @@ $Channels = @(
     "Mega"
 )
 foreach ($Channel in $Channels) {
-    $GetWinGetVersion = (WinGet show "$PackageName.$Channel" | findstr -i Version).Substring(9)
-    # Write-Output  "WinGet Version of $PackageName.$Channel is $GetWinGetVersion"
+    $GetWinGetVersion = (WinGet show "$WinGetPackage.$Channel" | findstr -i Version).Substring(9)
+    # Write-Output  "WinGet Version of $WinGetPackage.$Channel is $GetWinGetVersion"
 
-    $GetLatestVersion = ((Get-NevergreenApp -Name KLiteCodecPack | Where-Object {$_.Channel -eq $Channel}).Version)
-    # Write-Output "Latest Version of $PackageName.$Channel is $GetLatestVersion"
+    $GetLatestVersion = ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Version)
+    # Write-Output "Latest Version of $WinGetPackage.$Channel is $GetLatestVersion"
 
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Output "Update available"
-        $GetLatestUri =  ((Get-NevergreenApp -Name KLiteCodecPack | Where-Object {$_.Channel -eq $Channel}).Uri)
+        $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
         Write-Output $GetLatestUri
     }
     else {

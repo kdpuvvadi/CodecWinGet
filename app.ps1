@@ -8,10 +8,10 @@ $Channels = @(
 )
 foreach ($Channel in $Channels) {
     $GetWinGetVersion = (WinGet show "$PackageName.$Channel" | findstr -i Version).Substring(9)
-    Write-Output  "WinGet Version of $PackageName.$Channel is $GetWinGetVersion"
+    # Write-Output  "WinGet Version of $PackageName.$Channel is $GetWinGetVersion"
 
     $GetLatestVersion = ((Get-NevergreenApp -Name KLiteCodecPack | Where-Object {$_.Channel -eq $Channel}).Version)
-    Write-Output "Latest Version of $PackageName.$Channel is $GetLatestVersion"
+    # Write-Output "Latest Version of $PackageName.$Channel is $GetLatestVersion"
 
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Output "Update available"

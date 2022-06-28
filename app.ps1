@@ -15,11 +15,12 @@ foreach ($Channel in $Channels) {
 
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Output "Update available"
+        $GetLatestUri =  ((Get-NevergreenApp -Name KLiteCodecPack | Where-Object {$_.Channel -eq $Channel}).Uri)
+        Write-Output $GetLatestUri
     }
     else {
         Write-Output "You've latest version installed"
     }
-    
     Write-Output ""
 }
  

@@ -34,4 +34,4 @@ jobs:
       - name: run
         shell: powershell
         run: |
-          ./app.ps1
+          ./app-run.ps1

@@ -1,6 +1,5 @@
 # Import Scripts 
 . ./lib/transcript.ps1
-. ./lib/manifest.ps1
 
 # Stop on error
 $ErrorActionPreference = 'Stop'
@@ -24,10 +23,11 @@ foreach ($Channel in $Channels) {
     $GetLatestVersion = ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Version)
     # Write-Output "Latest Version of $WinGetPackage.$Channel is $GetLatestVersion"
 
+    $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
+    # Write-Output $GetLatestUri
+
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Output "Update available"
-        $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
-        Write-Output $GetLatestUri
     }
     else {
         Write-Output "You've latest version installed"

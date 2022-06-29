@@ -1,6 +1,6 @@
 # Import Scripts 
-import-module ./lib/transcript.ps1
-import-module ./lib/manifest.ps1
+. ./lib/transcript.ps1
+. ./lib/manifest.ps1
 
 # Stop on error
 $ErrorActionPreference = 'Stop'

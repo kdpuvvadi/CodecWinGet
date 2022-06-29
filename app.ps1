@@ -28,6 +28,8 @@ foreach ($Channel in $Channels) {
 
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Output "Update available"
+        Write-Output "Creating Manifest for $WinGetPackage.$Channel version $GetLatestVersion"
+        wingetcreate update --urls $GetLatestUri --version "$GetLatestVersion" "$WinGetPackage.$Channel"
     }
     else {
         Write-Output "You've latest version installed"
@@ -35,3 +37,4 @@ foreach ($Channel in $Channels) {
     Write-Output ""
 }
  
+Stop-Transcript

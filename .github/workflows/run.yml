@@ -20,8 +20,8 @@ jobs:
       - name: Download wingetcreate
         shell: pwsh
         run: |
-          iwr https://aka.ms/wingetcreate/latest -OutFile wingetcreate.exe
-          wingetcreate.exe -v
+          iwr https://aka.ms/wingetcreate/latest -OutFile ./wingetcreate.exe
+          .\wingetcreate.exe version
       - name: install winget
         shell: pwsh
         run: |

@@ -27,12 +27,11 @@ foreach ($Channel in $Channels) {
     Write-Output "Latest Version of $WinGetPackage.$Channel is $GetLatestVersion"
     Write-Output ""
 
-    Write-Output "Retrieving Latest version $GetLatestVersion URL"
-    $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
-    Write-Output $GetLatestUri
-    Write-Output ""
-
     if ($GetWinGetVersion -lt $GetLatestVersion) {
+         Write-Output "Retrieving Latest version $GetLatestVersion URL"
+        $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
+        Write-Output $GetLatestUri
+        Write-Output ""
         Write-Output "Update available"
         Write-Output "Creating Manifest for $WinGetPackage.$Channel version $GetLatestVersion"
         wingetcreate update --urls $GetLatestUri --version "$GetLatestVersion" "$WinGetPackage.$Channel"

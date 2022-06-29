@@ -2,6 +2,9 @@
 import-module ./lib/transcript.ps1
 import-module ./lib/manifest.ps1
 
+# Stop on error
+$ErrorActionPreference = 'Stop'
+
 # Start log
 Start-Log
 

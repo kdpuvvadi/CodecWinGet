@@ -1,5 +1,6 @@
 # Import Scripts 
-import-module ./lib/*.ps1
+import-module ./lib/transcript.ps1
+import-module ./lib/manifest.ps1
 
 # Start log
 Start-Log

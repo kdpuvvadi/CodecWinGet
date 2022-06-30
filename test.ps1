@@ -1,7 +1,12 @@
-$URL = "https://github.com/microsoft/winget-pkgs/tree/master/manifests/c/CodecGuide/K-LiteCodecPack/Basic"
+$URL = "https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/c/CodecGuide/K-LiteCodecPack/Basic?ref=master"
 
-$UrlLinks = ((Invoke-WebRequest $URL).Links | select -expand href | findstr -i Basic/)
+$APIResponse = ((Invoke-WebRequest  -uri $URL).Content | ConvertFrom-Json)
 
-Write-Host $UrlLinks
 
-$Versions = 
+$versions= $APIResponse | ForEach-Object  {"$($_.name)"} | Format-Table
+
+Write-Host $versions
+
+# $RecentVersion = $APIResponse | Measure-Object -Maximum
+
+# Write-Host $RecentVersion

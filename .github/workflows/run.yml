@@ -22,6 +22,6 @@ jobs:
         run: |
           iwr https://aka.ms/wingetcreate/latest -OutFile ./wingetcreate.exe
       - name: run
-        shell: powershell
+        shell: pwsh
         run: |
           ./app.ps1

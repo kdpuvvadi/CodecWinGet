@@ -1,3 +1,7 @@
+param(
+    $action
+)
+
 # Import Scripts 
 . ./lib/transcript.ps1
 
@@ -6,7 +10,11 @@ $ErrorActionPreference = 'Stop'
 
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
-Write-Host $GITHUB_ACTIONS
+
+if (-not $action){
+    Start-Log
+    $logging = $true
+}
 
 $Channels = @(
     "Basic"
@@ -42,4 +50,8 @@ foreach ($Channel in $Channels) {
         Write-Host "WinGet Version of $WinGetPackage.$Channel is Latest" -ForegroundColor Green
     }
     Write-Output ""
+}
+
+if ($logging){
+    Stop-Transcript
 }

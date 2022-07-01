@@ -26,4 +26,4 @@ jobs:
       - name: run
         shell: pwsh
         run: |
-          ./updatecheck.ps1
+          ./updatecheck.ps1 -action $true

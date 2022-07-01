@@ -5,7 +5,10 @@
 $ErrorActionPreference = 'Stop'
 
 # Start log
-Start-Log
+if (-not $GITHUB_ACTIONS) {
+    Start-Log
+}
+
 
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
@@ -46,5 +49,7 @@ foreach ($Channel in $Channels) {
     Write-Output ""
     Start-Sleep 3
 }
- 
-Stop-Transcript
+
+if (-not $GITHUB_ACTIONS) {
+    Stop-Transcript
+}

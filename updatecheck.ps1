@@ -41,5 +41,4 @@ foreach ($Channel in $Channels) {
         Write-Host "WinGet Version of $WinGetPackage.$Channel is Latest" -ForegroundColor Green
     }
     Write-Output ""
-    Start-Sleep 3
 }

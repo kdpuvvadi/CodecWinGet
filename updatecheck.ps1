@@ -4,9 +4,6 @@
 # Stop on error
 $ErrorActionPreference = 'Stop'
 
-# Start log
-Start-Log
-
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
 
@@ -46,5 +43,3 @@ foreach ($Channel in $Channels) {
     Write-Output ""
     Start-Sleep 3
 }
-
-Stop-Transcript

@@ -1,4 +1,4 @@
-name: manifest release
+name: update check
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   run:
-    name: codecguide
+    name: updatecheck
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,4 +26,4 @@ jobs:
       - name: run
         shell: pwsh
         run: |
-          ./app.ps1
+          ./updatecheck.ps1

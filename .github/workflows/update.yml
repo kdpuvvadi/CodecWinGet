@@ -1,0 +1,29 @@
+name: update check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  run:
+    name: updatecheck
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Nevergreen from PSGallery
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module Nevergreen -ErrorAction Stop
+      - name: Download wingetcreate
+        shell: pwsh
+        run: |
+          iwr https://aka.ms/wingetcreate/latest -OutFile ./wingetcreate.exe
+      - name: run
+        shell: pwsh
+        run: |
+          ./updatecheck.ps1 -action $true

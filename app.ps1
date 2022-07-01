@@ -1,14 +1,20 @@
+param(
+    $action
+)
+
 # Import Scripts 
 . ./lib/transcript.ps1
 
 # Stop on error
 $ErrorActionPreference = 'Stop'
 
-# Start log
-Start-Log
-
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
+
+if (-not $action){
+    Start-Log
+    $logging = $true
+}
 
 $Channels = @(
     "Basic"
@@ -44,7 +50,8 @@ foreach ($Channel in $Channels) {
         Write-Host "WinGet Version of $WinGetPackage.$Channel is Latest" -ForegroundColor Green
     }
     Write-Output ""
-    Start-Sleep 3
 }
 
-Stop-Transcript
+if ($logging){
+    Stop-Transcript
+}

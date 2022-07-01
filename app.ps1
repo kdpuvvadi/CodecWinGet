@@ -5,7 +5,10 @@
 $ErrorActionPreference = 'Stop'
 
 # Start log
-if (-not $GITHUB_ACTIONS) {
+if ($GITHUB_ACTIONS) {
+    continue
+}
+else {
     Start-Log
 }
 
@@ -50,6 +53,9 @@ foreach ($Channel in $Channels) {
     Start-Sleep 3
 }
 
-if (-not $GITHUB_ACTIONS) {
+if ($GITHUB_ACTIONS) {
+    continue
+}
+else {
     Stop-Transcript
 }

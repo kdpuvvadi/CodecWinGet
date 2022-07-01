@@ -1,5 +1,5 @@
 param(
-    $action
+    $log
 )
 
 # Import Scripts 
@@ -11,9 +11,8 @@ $ErrorActionPreference = 'Stop'
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
 
-if (-not $action){
+if ($log){
     Start-Log
-    $logging = $true
 }
 
 $Channels = @(
@@ -52,6 +51,6 @@ foreach ($Channel in $Channels) {
     Write-Output ""
 }
 
-if ($logging){
+if ($log){
     Stop-Transcript
 }

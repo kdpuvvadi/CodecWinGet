@@ -26,4 +26,4 @@ jobs:
       - name: run
         shell: pwsh
         run: |
-          ./app.ps1 -action $true
+          ./app.ps1

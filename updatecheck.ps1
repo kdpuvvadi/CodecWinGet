@@ -6,6 +6,7 @@ $ErrorActionPreference = 'Stop'
 
 $WinGetPackage = "CodecGuide.K-LiteCodecPack"
 $NevergreenPackage = "KLiteCodecPack"
+Write-Host $GITHUB_ACTIONS
 
 $Channels = @(
     "Basic"

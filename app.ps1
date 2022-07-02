@@ -42,7 +42,7 @@ foreach ($Channel in $Channels) {
         Write-Host "Done" -ForegroundColor Green
         Write-Host "Update available"
         Write-Host "Creating Manifest for $WinGetPackage.$Channel version $GetLatestVersion"
-        .\wingetcreate update --urls $GetLatestUri --version "$GetLatestVersion" -s -t $pat "$WinGetPackage.$Channel"
+        .\wingetcreate update "$WinGetPackage.$Channel" -u $GetLatestUri -v "$GetLatestVersion" -s -t $pat
     }
     else {
         Write-Host ""

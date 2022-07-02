@@ -2,9 +2,9 @@ name: update check
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main,dev ]
   schedule:
     - cron: '0 0 * * *'
 
@@ -26,4 +26,4 @@ jobs:
       - name: run
         shell: pwsh
         run: |
-          ./app.ps1 -log $true
+          ./app.ps1 -log $true -pat ${{ secrets.WORKFLOW_PAT }}

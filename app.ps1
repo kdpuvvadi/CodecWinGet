@@ -31,14 +31,16 @@ foreach ($Channel in $Channels) {
     Write-Host -NoNewline "Done " -ForegroundColor Green
     Write-Host $GetWinGetVersion -ForegroundColor Red
 
+    $GetpackageNevergreen = Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}
+
     Write-Host -NoNewline "Retrieving Latest version of $WinGetPackage.$Channel "
-    $GetLatestVersion = ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Version)
+    $GetLatestVersion = $GetpackageNevergreen.Version
     Write-Host -NoNewline "Done " -ForegroundColor Green
     Write-Host $GetLatestVersion -ForegroundColor Red
 
     if ($GetWinGetVersion -lt $GetLatestVersion) {
         Write-Host -NoNewline "Retrieving Latest version $GetLatestVersion URL "
-        $GetLatestUri =  ((Get-NevergreenApp -Name $NevergreenPackage | Where-Object {$_.Channel -eq $Channel}).Uri)
+        $GetLatestUri = $GetpackageNevergreen.Uri
         Write-Host "Done" -ForegroundColor Green
         Write-Host "Update available"
         Write-Host "Creating Manifest for $WinGetPackage.$Channel version $GetLatestVersion"

@@ -4,11 +4,17 @@
 
 ### WingetCreate
 
-Install [WinGet-Create](https://github.com/microsoft/winget-create)
+Install [WinGetCreate](https://github.com/microsoft/winget-create) with `WinGet` package manager
 
 ```pwsh
-winget install wingetcreate
+WinGet install wingetcreate
 ```
+Download the binary directly
+
+```pwsh
+Invoke-WebRequest https://aka.ms/wingetcreate/latest -OutFile ./wingetcreate.exe
+```
+
 
 ### Nevergreen
 

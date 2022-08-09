@@ -26,4 +26,4 @@ jobs:
       - name: run
         shell: pwsh
         run: |
-          ./app.ps1 -log $false -pat ${{ secrets.WORKFLOW_PAT }}
+          ./app.ps1 -log $false -pat  ${{ secrets.GITHUB_TOKEN }}
